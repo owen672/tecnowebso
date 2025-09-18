@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TecnoWeb Solutions — Mantenimiento y Marketing Digital</title>
+  <meta name="description" content="TecnoWeb Solutions — Mantenimiento, optimización y soporte para PC y portátiles. Marketing digital y soluciones de ingeniería de sistemas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050505;
+      --card:#0b0b0b;
+      --gold:#d4af37;
+      --muted:#bdbdbd;
+      --accent: #bfa86f;
+      --glass: rgba(255,255,255,0.03);
+      --maxw:1100px;
+      --radius:12px;
+      --gap:18px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Arial,sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, #0b0b0b 100%);
+      color:#eee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    .container{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:28px;
+    }
+
+    /* Header / Nav */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:8px 0;
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(5,5,5,0.7), rgba(5,5,5,0.35));
+      border-bottom:1px solid rgba(255,255,255,0.02);
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .brand img{
+      width:72px;
+      height:72px;
+      object-fit:contain;
+      border-radius:12px;
+      background:var(--glass);
+      padding:8px;
+      box-shadow:var(--shadow);
+    }
+    .brand h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.6px;
+      color:#fff;
+    }
+    nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:8px;
+      transition: all .18s ease;
+    }
+    nav a:hover{ color:var(--gold); transform:translateY(-2px) }
+
+    .cta{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      background:linear-gradient(180deg,var(--gold),var(--accent));
+      color:#0b0b0b;
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(183,140,69,0.12);
+    }
+    .ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:10px;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+      padding:36px 0 14px;
+    }
+    .hero .left h2{
+      margin:0 0 10px;
+      font-size:34px;
+      line-height:1.02;
+      color:#fff;
+      letter-spacing:0.2px;
+    }
+    .tag{
+      display:inline-block;
+      background:linear-gradient(90deg, rgba(212,175,55,0.12), rgba(191,168,111,0.08));
+      color:var(--gold);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      margin-bottom:14px;
+      border:1px solid rgba(212,175,55,0.08);
+    }
+    .hero p{ color:var(--muted); margin-top:0; font-size:15px }
+
+    .features{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+    .feature{
+      background:var(--card);
+      padding:12px;
+      border-radius:10px;
+      min-width:160px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .feature h4{ margin:0 0 6px; color:#fff; font-size:13px }
+    .feature p{ margin:0; color:var(--muted); font-size:13px }
+
+    /* Right hero card */
+    .hero-card{
+      background: linear-gradient(180deg, rgba(212,175,55,0.04), rgba(255,255,255,0.012));
+      border-radius:14px;
+      padding:20px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(212,175,55,0.06);
+    }
+    .hero-card h3{ margin:0 0 8px; color:#fff }
+    .price{
+      display:flex; align-items:baseline; gap:8px; margin:10px 0 12px;
+    }
+    .price strong{ font-size:22px; color:var(--gold) }
+    .mini-list{ display:flex; flex-direction:column; gap:8px; color:var(--muted) }
+
+    /* Services grid */
+    .section{
+      margin-top:28px;
+      padding:28px 0;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:16px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.02);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+      min-height:140px;
+    }
+    .card h3{ margin:0 0 8px; color:#fff; font-size:18px }
+    .card p{ margin:0; color:var(--muted); font-size:14px }
+
+    /* Portfolio / examples */
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:12px;
+    }
+    .port-item{
+      border-radius:10px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));
+      min-height:120px;
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .port-item h4{ margin:0; color:#fff }
+    .port-item p{ color:var(--muted); margin:6px 0 0; font-size:13px }
+
+    /* Testimonials */
+    .testimonials{
+      display:flex;
+      gap:14px;
+      overflow:auto;
+      padding-bottom:6px;
+    }
+    .testimonial{
+      min-width:260px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+      padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);
+    }
+    .testimonial p{ margin:0; color:var(--muted); font-size:14px }
+    .testimonial strong{ color:#fff; display:block; margin-top:10px }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:20px;
+    }
+    form{
+      background:var(--card);
+      padding:16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    label{ display:block; font-size:13px; color:var(--muted); margin-bottom:8px }
+    input, textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.04);
+      background:transparent;
+      color:#fff;
+      margin-bottom:12px;
+      font-size:14px;
+    }
+    textarea{ min-height:120px; resize:vertical }
+    .contact-info{
+      background:linear-gradient(180deg, rgba(212,175,55,0.02), transparent);
+      padding:18px;
+      border-radius:12px;
+      border:1px solid rgba(212,175,55,0.05);
+    }
+    .contact-info h4{ margin:0 0 8px }
+    .contact-info a{ color:var(--gold); text-decoration:none; font-weight:700 }
+
+    /* Footer */
+    footer{
+      margin-top:30px;
+      padding:22px 0 60px;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.02);
+    }
+    .foot-grid{ display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{ grid-template-columns:1fr; }
+      .contact, .hero{ grid-template-columns:1fr; }
+      .grid{ grid-template-columns: repeat(2,1fr); }
+      .portfolio-grid{ grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width:620px){
+      nav{ display:none }
+      header{ padding:12px; }
+      .brand img{ width:54px; height:54px }
+      .grid{ grid-template-columns:1fr; }
+      .portfolio-grid{ grid-template-columns:1fr; }
+    }
+
+    /* small helpers */
+    .muted{ color:var(--muted) }
+    .kicker{ color:var(--gold); font-weight:800; letter-spacing:0.6px }
+    .mb{ margin-bottom:12px }
+  </style>
+</head>
+<body>
+  <header class="container" aria-label="Encabezado principal">
+    <div class="brand">
+      <img src="ppppp.png" alt="Logo TecnoWeb Solutions" id="logo"
+           onerror="this.onerror=null; this.src='/mnt/data/logo empres owen.png'">
+      <div>
+        <h1>TecnoWeb Solutions</h1>
+        <div style="color:var(--muted);font-size:13px">Ingeniería de sistemas · Mantenimiento · Marketing</div>
+      </div>
+    </div>
+
+    <nav aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="cta">
+      <a class="ghost" href="tel:+573001234567" aria-label="Llamar">📞 +57 313 871 95 83</a>
+      <button class="btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+    </div>
+  </header>
+
+  <main class="container" id="inicio" role="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="left">
+        <span class="tag">Soluciones TI • Profesionales</span>
+        <h2 id="hero-title">Mantenimiento y optimización de PCs · Marketing Digital · Soporte profesional</h2>
+        <p>En <strong>TecnoWeb Solutions</strong> ofrecemos servicios integrales para equipos de escritorio y portátiles, además de estrategias digitales para impulsar tu negocio. Atención rápida, diagnósticos precisos y soluciones a medida.</p>
+
+        <div class="features" role="list">
+          <div class="feature" role="listitem">
+            <h4>Diagnóstico exprés</h4>
+            <p>Identificamos fallas y proponemos la mejor solución.</p>
+          </div>
+          <div class="feature" role="listitem">
+            <h4>Optimización & limpieza</h4>
+            <p>Mayor velocidad, menor consumo y arranques más rápidos.</p>
+          </div>
+          <div class="feature" role="listitem">
+            <h4>Soporte remoto y presencial</h4>
+            <p>Atención flexible según tus necesidades.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <a class="btn" href="#servicios">Ver servicios</a>
+          <a class="ghost" href="#portafolio" style="margin-left:8px">Ver ejemplos</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-labelledby="plan-title">
+        <h3 id="plan-title">Plan de mantenimiento básico</h3>
+        <div class="price">
+          <strong>$120.000 COP</strong>
+          <span style="color:var(--muted);font-size:13px">— revisión y optimización básica</span>
+        </div>
+        <div class="mini-list">
+          <div class="muted">· Análisis de disco y limpieza de archivos</div>
+          <div class="muted">· Optimización de inicio y servicios</div>
+          <div class="muted">· Actualización de controladores</div>
+        </div>
+        <div style="margin-top:14px;">
+          <button class="btn" onclick="openWhatsApp()">Pedir cita via WhatsApp</button>
+          <button class="ghost" style="margin-left:8px" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</button>
+        </div>
+      </aside>
+    </section>
+    <aside class="hero-card" aria-labelledby="plan-title">
+        <h3 id="plan-title">Plan de mantenimiento intermedio</h3>
+        <div class="price">
+          <strong>$200.000 COP</strong>
+          <span style="color:var(--muted);font-size:13px">— revisión y optimización intermedio</span>
+        </div>
+        <div class="mini-list">
+          <div class="muted">· Análisis de disco, cambio y limpieza de archivos</div>
+          <div class="muted">· Optimización de inicio y servicios</div>
+          <div class="muted">· Actualización de controladores</div>
+          <div class="muted">· instalacion y actualizacion de office</div>
+          <div class="muted">· mantenimiento fisico de la pc</div>
+        </div>
+        <div style="margin-top:14px;">
+          <button class="btn" onclick="openWhatsApp()">Pedir cita via WhatsApp</button>
+          <button class="ghost" style="margin-left:8px" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</button>
+        </div>
+      </aside>
+    </section>
+     <aside class="hero-card" aria-labelledby="plan-title">
+        <h3 id="plan-title">Plan de mantenimiento premiun</h3>
+        <div class="price">
+          <strong>$300.000 COP</strong>
+          <span style="color:var(--muted);font-size:13px">— revisión y optimización intermedio</span>
+        </div>
+        <div class="mini-list">
+          <div class="muted">· Análisis de disco, cambio y limpieza de archivos</div>
+          <div class="muted">· Optimización de inicio y servicios</div>
+          <div class="muted">· Actualización de controladores</div>
+          <div class="muted">· instalacion y actualizacion de office</div>
+          <div class="muted">· mantenimiento fisico de la pc</div>
+          <div class="muted">· Cambio de pasta térmica para mejor refrigeración.</div>
+          <div class="muted">· Instalación de antivirus premium y configuración de seguridad.</div>
+          <div class="muted">· Soporte remoto ilimitado por 30 días después del mantenimiento</div>
+        </div>
+        <div style="margin-top:14px;">
+          <button class="btn" onclick="openWhatsApp()">Pedir cita via WhatsApp</button>
+          <button class="ghost" style="margin-left:8px" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</button>
+        </div>
+      </aside>
+    </section>
+
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section" aria-labelledby="servicios-title">
+      <h2 id="servicios-title" class="kicker">Servicios</h2>
+      <p class="muted mb">Servicios pensados para empresas y usuarios finales — soluciones seguras y medibles.</p>
+
+      <div class="grid" role="list">
+        <article class="card" role="listitem" aria-labelledby="s1">
+          <h3 id="s1">Mantenimiento preventivo y correctivo</h3>
+          <p>Revisión completa del hardware, limpieza interna, reemplazo de componentes, tests de estrés y comprobación de fuente y refrigeración.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="s2">
+          <h3 id="s2">Optimización de sistemas</h3>
+          <p>Aceleramos tu equipo: optimización de arranque, configuración del sistema, limpieza de registros, desfragmentación (HDD) y ajustes de rendimiento.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="s3">
+          <h3 id="s3">Recuperación de datos</h3>
+          <p>Recuperación básica desde particiones, recuperación de archivos eliminados y diagnóstico de discos con fallas lógicas.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="s4">
+          <h3 id="s4">Instalación y configuración</h3>
+          <p>Instalación de sistemas operativos, drivers, suites de ofimática y configuraciones de seguridad y privacidad.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="s5">
+          <h3 id="s5">Soporte remoto y mantenimiento por contrato</h3>
+          <p>Planes de soporte mensual para empresas, con actualización y monitoreo proactivo de equipos y redes.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="s6">
+          <h3 id="s6">Marketing Digital y Desarrollo Web</h3>
+          <p>Landing pages, SEO básico, campañas en redes sociales, gestión de anuncios (Facebook/Google) y analítica para maximizar ROI.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" class="section" aria-labelledby="port-title">
+      <h2 id="port-title" class="kicker">Portafolio / Casos</h2>
+      <p class="muted mb">Algunos ejemplos reales de trabajo (anónimo por confidencialidad de clientes).</p>
+
+      <div class="portfolio-grid" role="list">
+        <div class="port-item" role="listitem">
+          <div>
+            <h4>Optimización de 30 equipos — Clínica</h4>
+            <p>Reducción de tiempos de arranque en promedio de 65% y centralización de respaldos.</p>
+          </div>
+          <small class="muted">Soporte presencial · 2025</small>
+        </div>
+
+        <div class="port-item" role="listitem">
+          <div>
+            <h4>Recuperación de datos — Estudio</h4>
+            <p>Recuperamos archivos fundamentales tras falla en HDD. 95% éxito en recuperación lógica.</p>
+          </div>
+          <small class="muted">Intervención exprés · 2024</small>
+        </div>
+
+        <div class="port-item" role="listitem">
+          <div>
+            <h4>Campaña de Ads — Tienda local</h4>
+            <p>Incremento de ventas online en 48% durante 2 meses con campaña segmentada.</p>
+          </div>
+          <small class="muted">Marketing digital · 2025</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section" aria-labelledby="testi-title">
+      <h2 id="testi-title" class="kicker">Testimonios</h2>
+      <div class="testimonials" role="list">
+        <div class="testimonial" role="listitem">
+          <p>"Servicio impecable: diagnosticaron y resolvieron el problema en tiempo récord. Nuestro equipo volvió a rendir como nuevo."</p>
+          <strong>— Cliente satisfecho, Bogotá</strong>
+        </div>
+
+        <div class="testimonial" role="listitem">
+          <p>"La campaña en redes nos trajo clientes nuevos y medibles. Recomendados para negocios que buscan resultados."</p>
+          <strong>— Emprendimiento local</strong>
+        </div>
+
+        <div class="testimonial" role="listitem">
+          <p>"Serios, responsables y con precios justos. Hicieron mantenimiento a todos los equipos de la oficina."</p>
+          <strong>— Oficina administrativa</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+<section id="contacto" class="section" aria-labelledby="contacto-title">
+  <h2 id="contacto-title" class="kicker">Contacto</h2>
+  <p class="muted mb">Contáctanos para cotizaciones, visitas o soporte remoto.</p>
+
+  <div class="contact">
+    <form id="contactForm" onsubmit="sendToWhatsApp(event)" novalidate>
+      <label for="name">Nombre</label>
+      <input id="name" name="name" type="text" required placeholder="Tu nombre completo">
+
+      <label for="email">Correo electrónico</label>
+      <input id="email" name="email" type="email" required placeholder="tunombre@ejemplo.com">
+
+      <label for="phone">Teléfono / WhatsApp</label>
+      <input id="phone" name="phone" type="tel" required placeholder="+57 3XX XXX XXXX">
+
+      <label for="service">Servicio de interés</label>
+      <input id="service" name="service" type="text" placeholder="Ej: Optimización PC, Campaña Ads">
+
+      <label for="message">Mensaje</label>
+      <textarea id="message" name="message" placeholder="Cuéntanos el problema o proyecto..." required></textarea>
+
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <button class="btn" type="button" onclick="sendToWhatsApp(event)">📱 Enviar por WhatsApp</button>
+        <button class="btn" type="button" onclick="sendToEmail()">📧 Enviar por Correo</button>
+        <button type="button" class="ghost" onclick="fillDemo()">Rellenar demo</button>
+      </div>
+      <p id="formMsg" style="margin-top:10px;font-size:13px;color:var(--muted)"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+function sendToWhatsApp(event) {
+  if(event) event.preventDefault();
+
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let phone = document.getElementById("phone").value;
+  let service = document.getElementById("service").value;
+  let message = document.getElementById("message").value;
+
+  let numero = "573138719583"; // <-- CAMBIA por tu número real de WhatsApp
+
+  let texto = `Hola, soy ${name}.%0A📧 Email: ${email}%0A📱 Tel: ${phone}%0A💻 Servicio: ${service}%0A✉️ Mensaje: ${message}`;
+  let url = `https://wa.me/${numero}?text=${texto}`;
+
+  window.open(url, "_blank");
+}
+
+function sendToEmail() {
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let phone = document.getElementById("phone").value;
+  let service = document.getElementById("service").value;
+  let message = document.getElementById("message").value;
+
+  let destino = "tucorreo@ejemplo.com"; // <-- CAMBIA por tu correo real
+  let asunto = `Consulta de ${name}`;
+  let cuerpo = `Nombre: ${name}%0AEmail: ${email}%0ATeléfono: ${phone}%0AServicio: ${service}%0AMensaje:%0A${message}`;
+
+  window.location.href = `mailto:${destino}?subject=${asunto}&body=${cuerpo}`;
+}
+
+function fillDemo() {
+  document.getElementById("name").value = "Juan Pérez";
+  document.getElementById("email").value = "juan@correo.com";
+  document.getElementById("phone").value = "+57 3138719583";
+  document.getElementById("service").value = "Optimización PC";
+  document.getElementById("message").value = "Necesito soporte técnico urgente.";
+}
+</script>
+        <aside class="contact-info" aria-label="Información de contacto">
+          <h4>Contacto rápido</h4>
+          <p class="muted">Teléfono: <a href="tel:+573001234567">+57 313 871 9583</a></p>
+          <p class="muted">WhatsApp: <a href="#" onclick="openWhatsApp()">Chatear en WhatsApp</a></p>
+          <p class="muted">Correo: <a href="mailto:info@tecnowebsolutions.com">tecnowebsolutions59@gmail.com</a></p>
+
+          <div style="margin-top:12px">
+            <strong class="muted">Horario:</strong>
+            <div class="muted">Lun - sab: 9:00 am - 6:00 pm</div>
+          </div>
+
+          <div style="margin-top:14px">
+     <strong class="muted">Redes</strong>
+<div style="margin-top:8px; display:flex; gap:8px;">
+  <a href="https://www.instagram.com/tecnoweb.solutions?igsh=MWJjcnVwMWh6dTAwYw==" target="_blank" aria-label="Instagram" style="color:var(--gold);text-decoration:none;">Instagram</a>
+  <a href="ttps://www.facebook.com/profile.php?id=61558120509340" target="_blank" aria-label="Facebook" style="color:var(--gold);text-decoration:none;">Facebook</a>
+  <a href="https://www.tiktok.com/@tecnoweb.solution?_t=ZS-8znAi6IQHwX&_r=1" target="_blank" aria-label="LinkedIn" style="color:var(--gold);text-decoration:none;">tiktok</a>
+</div>
+
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ / Info adicional -->
+    <section class="section" aria-labelledby="info-title">
+      <h2 id="info-title" class="kicker">¿Por qué elegirnos?</h2>
+      <p class="muted">Combinamos conocimientos técnicos con atención humana: transparencia en precios, reportes después de cada intervención y planes a medida para empresas.</p>
+      <ul style="color:var(--muted);margin-top:12px">
+        <li>Garantía en trabajos de software (30 días) y recomendaciones claras en hardware.</li>
+        <li>Reportes técnicos entregados al finalizar intervenciones.</li>
+        <li>Posibilidad de contrato de soporte mensual para empresas con prioridad en atención.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <div class="container foot-grid">
+        <div>
+          <strong style="color:#fff">TecnoWeb Solutions</strong>
+          <div class="muted" style="margin-top:6px">© <span id="year"></span> Todos los derechos reservados.</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="muted">Dirección: Bogotá, Colombia</div>
+          <div style="margin-top:8px">
+            <a href="#" style="color:var(--gold); text-decoration:none; margin-right:12px">Política de privacidad</a>
+            <a href="#" style="color:var(--gold); text-decoration:none">Términos</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // fecha en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+
+    // Open WhatsApp prefilled (cambia el número si lo deseas)
+    function openWhatsApp(){
+      const phone = '+573138719583';
+      const text = encodeURIComponent('Hola, necesito información sobre servicios de TecnoWeb Solutions.');
+      window.open('https://wa.me/' + phone.replace(/\D/g,'') + '?text=' + text, '_blank');
+    }
+
+    // Form submit (cliente): valida y muestra mensaje
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const msg = document.getElementById('formMsg');
+
+      if(!name || !email || !phone || !message){
+        msg.style.color = '#e57373';
+        msg.textContent = 'Por favor completa todos los campos obligatorios.';
+        return;
+      }
+
+      // aquí normalmente enviarías a tu backend o servicio (Email, Zapier, Netlify Forms, etc.)
+      // Simulación de envío:
+      msg.style.color = 'var(--muted)';
+      msg.textContent = 'Enviando...';
+
+      setTimeout(()=>{
+        msg.style.color = 'var(--gold)';
+        msg.textContent = 'Mensaje enviado. Gracias, nos pondremos en contacto pronto.';
+        document.getElementById('contactForm').reset();
+      }, 900);
+    }
+
+    // Fill demo for testing
+    function fillDemo(){
+      document.getElementById('name').value = 'Juan Pérez';
+      document.getElementById('email').value = 'juan@ejemplo.com';
+      document.getElementById('phone').value = '+57 313 871 9583';
+      document.getElementById('service').value = 'Optimización PC';
+      document.getElementById('message').value = 'Necesito optimizar mi computador que está muy lento. ¿Cuánto cuesta?';
+    }
+
+    // Accessibility: keyboard nav support
+    document.addEventListener('keyup', function(e){
+      if(e.key === 'Escape') window.scrollTo({top:0,behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>
